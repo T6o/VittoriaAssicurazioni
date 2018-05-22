@@ -1,0 +1,93 @@
+<mat-toolbar color="primary">Vittoria Assicurazioni</mat-toolbar>
+
+<mat-expansion-panel color="primary">
+   <mat-expansion-panel-header>
+      <mat-panel-title>
+         Censimento Persona Fisica
+      </mat-panel-title>
+   </mat-expansion-panel-header>
+   <mat-grid-list   cols="3" rowHeight="4:1" md-gutter="12px" >
+      <h3>Info Agenzia</h3>
+      <mat-grid-tile>
+         <mat-select placeholder="Punti Vendita" size="10">
+            <!--mat-option *ngFor="let food of foods" [value]="food.value">
+               {{ food.viewValue }}
+               </mat-option-->
+         </mat-select>
+      </mat-grid-tile>
+      <mat-grid-tile>
+         <mat-select placeholder="Canale">
+            <!--mat-option *ngFor="let food of foods" [value]="food.value">
+               {{ food.viewValue }}
+               </mat-option-->
+         </mat-select>
+      </mat-grid-tile>
+      <mat-grid-tile>
+         <mat-form-field class="example-full-width">
+            <input matInput placeholder="Produttore">
+         </mat-form-field>
+      </mat-grid-tile>
+   </mat-grid-list>
+   <hr/>
+   <mat-grid-list   cols="3" rowHeight="4:1" md-gutter="12px" >
+      <h3>Nominativo</h3>
+      <mat-grid-tile>
+         <mat-form-field>
+            <input matInput placeholder="Nome">
+         </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+         <mat-form-field >
+            <input matInput placeholder="Cognome">
+         </mat-form-field>
+      </mat-grid-tile>
+   </mat-grid-list>
+   <hr/>
+   <mat-grid-list   cols="3" rowHeight="4:1" md-gutter="12px" >
+      <h3>Dati Fiscali</h3>
+      <mat-grid-tile>
+         <mat-form-field >
+            <input matInput placeholder="Codice Fiscale">
+         </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+         <mat-form-field >
+            <input matInput placeholder="Partita Iva">
+         </mat-form-field>
+      </mat-grid-tile>
+   </mat-grid-list>
+   <hr/>
+
+   <mat-grid-list   cols="4" rowHeight="4:1" md-gutter="12px" >
+     <h3>Dati Anagrafici Persona</h3>
+     <mat-grid-tile>
+            <mat-form-field>
+               <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+       <mat-datepicker #picker></mat-datepicker>
+     </mat-form-field>
+   </mat-grid-tile>
+
+     <mat-grid-tile>
+        <mat-select placeholder="Provincia di nascita">
+           <!--mat-option *ngFor="let food of foods" [value]="food.value">
+              {{ food.viewValue }}
+              </mat-option-->
+        </mat-select>
+     </mat-grid-tile>
+     <mat-grid-tile>
+       <mat-form-field >
+          <input matInput placeholder="Luogo di nascita">
+       </mat-form-field>
+   </mat-grid-tile>
+
+     <mat-grid-tile>
+        <mat-select placeholder="Sesso">
+           <!--mat-option *ngFor="let food of foods" [value]="food.value">
+              {{ food.viewValue }}
+              </mat-option-->
+        </mat-select>
+     </mat-grid-tile>
+   </mat-grid-list>
+
+</mat-expansion-panel>
