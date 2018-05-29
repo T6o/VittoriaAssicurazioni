@@ -1,93 +1,158 @@
-<mat-toolbar color="primary">Vittoria Assicurazioni</mat-toolbar>
+<mat-toolbar class="toolbar" >
+  <span class="toolbarLogin">
+    <img src="assets/logo.svg">
+  </span>
 
-<mat-expansion-panel color="primary">
-   <mat-expansion-panel-header>
-      <mat-panel-title>
-         Censimento Persona Fisica
-      </mat-panel-title>
-   </mat-expansion-panel-header>
-   <mat-grid-list   cols="3" rowHeight="4:1" md-gutter="12px" >
-      <h3>Info Agenzia</h3>
-      <mat-grid-tile>
-         <mat-select placeholder="Punti Vendita" size="10">
-            <!--mat-option *ngFor="let food of foods" [value]="food.value">
-               {{ food.viewValue }}
-               </mat-option-->
-         </mat-select>
-      </mat-grid-tile>
-      <mat-grid-tile>
-         <mat-select placeholder="Canale">
-            <!--mat-option *ngFor="let food of foods" [value]="food.value">
-               {{ food.viewValue }}
-               </mat-option-->
-         </mat-select>
-      </mat-grid-tile>
-      <mat-grid-tile>
-         <mat-form-field class="example-full-width">
-            <input matInput placeholder="Produttore">
-         </mat-form-field>
-      </mat-grid-tile>
-   </mat-grid-list>
-   <hr/>
-   <mat-grid-list   cols="3" rowHeight="4:1" md-gutter="12px" >
-      <h3>Nominativo</h3>
-      <mat-grid-tile>
-         <mat-form-field>
-            <input matInput placeholder="Nome">
-         </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-         <mat-form-field >
-            <input matInput placeholder="Cognome">
-         </mat-form-field>
-      </mat-grid-tile>
-   </mat-grid-list>
-   <hr/>
-   <mat-grid-list   cols="3" rowHeight="4:1" md-gutter="12px" >
-      <h3>Dati Fiscali</h3>
-      <mat-grid-tile>
-         <mat-form-field >
+  <span class="example-fill-remaining-space"></span>
+
+  <span class="toolbarLogin humanRadius material-icons md-48">
+    account_circle
+  </span>
+
+
+  <span class="toolbarLogin" *ngIf="!edited">
+    <button (click)="login()" mat-button>
+      <img src="assets/login-24.png">
+    </button>
+  </span>
+  <span  class="toolbarLogin" *ngIf="edited">
+    <button (click)="logout()" mat-button>
+      <img src="assets/shutdown-24.png">
+    </button>
+  </span>
+</mat-toolbar>
+
+<button *ngIf="edited" (click)="saveButton()" class="verificaButton" mat-fab mat-button mat-ink-ripple >{{save? 'Salva': 'Indietro' }}</button>
+
+  <!--mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngIf="firstPG" class="transition">
+      <button  [disabled]="pfpgButtons" (click)="personaG()" mat-button class=" buttonGrid material-icons md-120">
+        perm_identity
+      </button></mat-grid-tile>
+    <mat-grid-tile *ngIf="firstPF">
+      <button  [disabled]="pfpgButtons" (click)="personaF()" mat-button class="buttonGrid material-icons md-100">
+        gavel
+      </button>
+    </mat-grid-tile>
+
+  </mat-grid-list-->
+
+<mat-list class="firstMenu ">
+
+    <mat-list-item  class="itemListF" >
+      <div class="fieldFirstButton">
+        <button   *ngIf="buttonPfisica"  id="pfisicaID" [disabled]="pfpgButtons" (click)="personaF()" mat-button class=" fleft animate buttonGrid material-icons md-120 ">
+          perm_identity
+        </button>
+        <button  *ngIf="buttonPgiuridica" id="pgiuridicaID" [disabled]="pfpgButtons" (click)="personaG()" mat-button class=" fright buttonGrid animate material-icons md-100">
+          gavel
+        </button>
+      </div>
+    </mat-list-item>
+
+  </mat-list>
+
+
+<div class=" formContainer" *ngIf="edited">
+
+
+  <form class="itemForm">
+
+    <div class="section">
+      <label class="formT">Info Agenzia</label>
+      <mat-list class="formCol" cols="1">
+        <mat-list-item class="itemListF">
+          <mat-form-field  class="fieldF">
+            <mat-select class="fieldF" placeholder="Punti vendita*">
+              <mat-option *ngFor="let p of pvendita" [value]="p.value">
+                {{p.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-list-item>
+        <mat-list-item class="itemListF">
+          <mat-form-field  class="fieldF">
+            <mat-select class="fieldF" placeholder="Canale">
+              <mat-option *ngFor="let c of canali" [value]="c.value">
+                {{c.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-list-item>
+
+        <mat-list-item class="itemListF">
+          <mat-form-field class="fieldF">
+            <input matInput placeholder="Produttore*">
+          </mat-form-field>
+          <button mat-fab type="submit">Scegli</button>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div class="section">
+      <label class="formT">Nominativo</label>
+      <mat-list class="formCol">
+        <mat-list-item class="itemListF">
+          <mat-form-field class="fieldF">
+            <input matInput placeholder="Cognome*">
+          </mat-form-field>
+          <mat-form-field  class="fieldF">
+            <input matInput placeholder="Nome*">
+          </mat-form-field>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+    <div class="section">
+      <label class="formT">Dati Fiscali</label>
+      <mat-list class="formCol">
+        <mat-list-item class="itemListF">
+          <mat-form-field class="fieldFDatiF">
             <input matInput placeholder="Codice Fiscale">
-         </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile>
-         <mat-form-field >
+          </mat-form-field>
+          <button class="datiF" mat-fab>Verifica</button>
+          <mat-checkbox class="datiF">Valido</mat-checkbox>
+          <mat-form-field class="fieldFDatiF">
             <input matInput placeholder="Partita Iva">
-         </mat-form-field>
-      </mat-grid-tile>
-   </mat-grid-list>
-   <hr/>
+          </mat-form-field>
+          <button mat-fab class="datiF">Verifica</button>
+          <mat-checkbox class="datiF">Valido</mat-checkbox>
+        </mat-list-item>
+      </mat-list>
+    </div>
 
-   <mat-grid-list   cols="4" rowHeight="4:1" md-gutter="12px" >
-     <h3>Dati Anagrafici Persona</h3>
-     <mat-grid-tile>
-            <mat-form-field>
-               <input matInput [matDatepicker]="picker" placeholder="Choose a date">
-       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-       <mat-datepicker #picker></mat-datepicker>
-     </mat-form-field>
-   </mat-grid-tile>
+    <div *ngIf="editfromSave">
+      <label class="formT editfromSave" >Dati Anagrafici Persona</label>
+      <mat-list class="formCol">
+        <mat-list-item class="itemListF">
+          <mat-form-field class="fieldF">
+            <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
-     <mat-grid-tile>
-        <mat-select placeholder="Provincia di nascita">
-           <!--mat-option *ngFor="let food of foods" [value]="food.value">
-              {{ food.viewValue }}
-              </mat-option-->
-        </mat-select>
-     </mat-grid-tile>
-     <mat-grid-tile>
-       <mat-form-field >
-          <input matInput placeholder="Luogo di nascita">
-       </mat-form-field>
-   </mat-grid-tile>
+          <mat-form-field  class="fieldF">
+            <mat-select class="fieldF" placeholder="Sesso*">
+              <mat-option *ngFor="let s of sesso" [value]="s.value">
+                {{s.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-list-item>
 
-     <mat-grid-tile>
-        <mat-select placeholder="Sesso">
-           <!--mat-option *ngFor="let food of foods" [value]="food.value">
-              {{ food.viewValue }}
-              </mat-option-->
-        </mat-select>
-     </mat-grid-tile>
-   </mat-grid-list>
+        <mat-list-item class="itemListF">
+          <mat-form-field class="fieldF">
+            <input matInput placeholder="Provincia Nascita">
+          </mat-form-field>
 
-</mat-expansion-panel>
+          <button class="datiF" mat-fab>Provincia</button>
+
+          <mat-form-field class="datiF">
+            <input matInput placeholder="Luogo di Nascita">
+          </mat-form-field>
+        </mat-list-item>
+      </mat-list>
+    </div>
+
+  </form>
+</div>
