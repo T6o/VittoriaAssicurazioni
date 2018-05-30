@@ -6,13 +6,27 @@ body{
   background: #f7f7f7;
   margin: 0;
 }
+
 .toolbar{
   width: 100%;
 }
+
 button:focus {outline:0;}
 
 .toolbarLogin{
-  margin-top: 40px;
+  margin-top: 30px;
+  color: #26406b;
+}
+
+.benvenutoName{
+  color: #2073f9;
+}
+
+.benvenutoMessageContainer{
+  margin-top: 28px;
+  margin-right: 10px;
+  font-size: 15px;
+  font-style: bold;
 }
 
 .my-mat-list-button{
@@ -36,7 +50,6 @@ button:focus {outline:0;}
   font-size: 10px;
 }
 
-
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
@@ -46,15 +59,42 @@ button:focus {outline:0;}
 .material-icons.md-120 { font-size: 96px; color: #26406b;}
 .material-icons.md-200 { font-size: 200px; }
 
+.circleBase {
+    border-radius: 50% ;
+    border: 3px solid #26406b;
+    background-color:  #cacdd1;
+    height: 170px;
+    width: 170px;
+    text-align: center;
+}
+
+.title{
+  width: 100%;
+  text-align: center;
+  color: #26406b;
+  font-family: Roboto,sans-serif;
+  font-weight:bold;
+}
+
+.buttonName{
+  margin-top: 10px;
+  color: #26406b;
+  font-family: Roboto,sans-serif;
+  font-weight:bold;
+}
+
+.buttonPG{
+  margin-top: 10px;
+}
+
 .animate {
-  height: 150px;
   -webkit-transition: all 1s ease;
   -moz-transition: all 1s ease;
   -o-transition: all 1s ease;
   -ms-transition: all 1s ease;
   transition: all 1s ease;
-  background-color: #f7f7f7;
-  border: 1px solid #f7f7f7;
+  /*background-color: #f7f7f7;*/
+  /*border: 1px solid #f7f7f7;*/
 }
 
 .animate.moveRight {
@@ -68,7 +108,20 @@ button:focus {outline:0;}
 }
 
 .firstMenu{
-  margin-top: 13%;
+  margin-top: 80px;
+}
+.firstSection{
+  margin-left: 20%;
+
+}
+
+.mat-button.buttonScegli{
+  border: solid 1px #dbdcdd;
+  margin-right: 0;
+}
+
+.buttonScegliItem{
+  float: right;
 }
 
 .humanRadius{
@@ -83,14 +136,8 @@ button:focus {outline:0;}
 /*  margin-left: 25%;*/
 }
 
-.buttonGrid{
-  height: 110px;
-  background-color: #f7f7f7;
-  border: 1px solid #f7f7f7;
-}
-
 .formContainer{
-  margin-top: 5px;
+  margin-top: 100px;
   padding-left: 110px;
   padding-right: 110px;
 }
@@ -194,4 +241,5 @@ button:focus {outline:0;}
   margin-right: 3%;
   margin-bottom:  1%;
   z-index: 2;
+  background-color: #f44336;
 }

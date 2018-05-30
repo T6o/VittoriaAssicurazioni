@@ -4,7 +4,14 @@
   </span>
 
   <span class="example-fill-remaining-space"></span>
-
+  <div class="benvenutoMessageContainer">
+  <span class="toolbarLogin benvenutoMessage">
+    Benvenuto
+  </span>
+  <span class="benvenutoName">
+    Marco
+  </span>
+</div>
   <span class="toolbarLogin humanRadius material-icons md-48">
     account_circle
   </span>
@@ -22,7 +29,7 @@
   </span>
 </mat-toolbar>
 
-<button *ngIf="edited" (click)="saveButton()" class="verificaButton" mat-fab mat-button mat-ink-ripple >{{save? 'Salva': 'Indietro' }}</button>
+<button *ngIf="edited" (click)="saveButton()" class="verificaButton" mat-fab mat-button mat-ink-ripple >{{save? 'Verifica': 'Indietro' }}</button>
 
   <!--mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile *ngIf="firstPG" class="transition">
@@ -36,20 +43,27 @@
     </mat-grid-tile>
 
   </mat-grid-list-->
+  <div class="title">
+    <h1> Nuovo Cliente </h1>
+  </div>
 
 <mat-list class="firstMenu ">
-
     <mat-list-item  class="itemListF" >
       <div class="fieldFirstButton">
-        <button   *ngIf="buttonPfisica"  id="pfisicaID" [disabled]="pfpgButtons" (click)="personaF()" mat-button class=" fleft animate buttonGrid material-icons md-120 ">
-          perm_identity
-        </button>
-        <button  *ngIf="buttonPgiuridica" id="pgiuridicaID" [disabled]="pfpgButtons" (click)="personaG()" mat-button class=" fright buttonGrid animate material-icons md-100">
-          gavel
-        </button>
+        <div *ngIf="buttonPfisica" (click)="personaF()" class="circleBase fleft animate"  id="pfisicaID">
+          <div  class="  menubutton material-icons md-100 ">
+            perm_identity
+          </div>
+          <div class="buttonName">persona fisica</div>
+        </div>
+        <div *ngIf="buttonPgiuridica" (click)="personaG()" class="circleBase fright animate" id="pgiuridicaID">
+          <div class="buttonPG menubutton material-icons md-100">
+            gavel
+          </div>
+          <div class="buttonName"> persona giuridica</div>
+        </div>
       </div>
     </mat-list-item>
-
   </mat-list>
 
 
@@ -58,9 +72,9 @@
 
   <form class="itemForm">
 
-    <div class="section">
+    <div class="section firstSection ">
       <label class="formT">Info Agenzia</label>
-      <mat-list class="formCol" cols="1">
+      <mat-list class=" formCol" cols="1">
         <mat-list-item class="itemListF">
           <mat-form-field  class="fieldF">
             <mat-select class="fieldF" placeholder="Punti vendita*">
@@ -84,8 +98,12 @@
           <mat-form-field class="fieldF">
             <input matInput placeholder="Produttore*">
           </mat-form-field>
-          <button mat-fab type="submit">Scegli</button>
         </mat-list-item>
+
+        <mat-list-item class="itemListF buttonScegliItem ">
+          <button mat-button class="buttonScegli" type="submit">Scegli</button>
+        </mat-list-item>
+
       </mat-list>
     </div>
 
@@ -110,12 +128,10 @@
           <mat-form-field class="fieldFDatiF">
             <input matInput placeholder="Codice Fiscale">
           </mat-form-field>
-          <button class="datiF" mat-fab>Verifica</button>
           <mat-checkbox class="datiF">Valido</mat-checkbox>
           <mat-form-field class="fieldFDatiF">
             <input matInput placeholder="Partita Iva">
           </mat-form-field>
-          <button mat-fab class="datiF">Verifica</button>
           <mat-checkbox class="datiF">Valido</mat-checkbox>
         </mat-list-item>
       </mat-list>
@@ -145,7 +161,7 @@
             <input matInput placeholder="Provincia Nascita">
           </mat-form-field>
 
-          <button class="datiF" mat-fab>Provincia</button>
+          <button class="datiF buttonScegli" mat-button>Provincia</button>
 
           <mat-form-field class="datiF">
             <input matInput placeholder="Luogo di Nascita">

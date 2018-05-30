@@ -47,7 +47,7 @@ export class AppComponent {
     //this.pf = true;
 
     var divToChange = <HTMLInputElement>document.getElementById('pfisicaID');
-    divToChange.className = "animate moveRight  material-icons md-120";
+    divToChange.className = "animate moveRight circleBase";
     this.buttonPfisica = true;
 
     this.buttonPgiuridica = false;
@@ -61,7 +61,8 @@ export class AppComponent {
     //this.pg = true;
 
     var divToChange = <HTMLInputElement>document.getElementById('pgiuridicaID');
-    divToChange.className = "fright animate moveLeft material-icons md-120";
+    divToChange.className = "fright animate moveLeft circleBase";
+
     this.buttonPfisica = false;
     this.buttonPgiuridica = true;
     //this.pfpgButtons = true;
@@ -79,17 +80,17 @@ export class AppComponent {
     if(this.buttonPgiuridica){
       this.buttonPfisica = true;
       var divToChange = <HTMLInputElement>document.getElementById('pgiuridicaID');
-      divToChange.className = "fright buttonGrid  material-icons md-100";
+      divToChange.className = "fright  moveLeft circleBase";
     }else{
       this.buttonPgiuridica = true ;
       var divToChange1 = <HTMLInputElement>document.getElementById('pfisicaID');
-      divToChange1.className = "fleft buttonGrid material-icons md-120";
+      divToChange1.className = "fleft  moveRight circleBase";
     }
 
   }
 
   saveButton(){
-    
+
     if(this.editfromSave){
       this.editfromSave = false;
     }else{
@@ -101,7 +102,10 @@ export class AppComponent {
     }
     else{
       this.save = true;
+      this.logout();
     }
+
+
     console.log("save");
   }
 
